@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+  </PropertyGroup>
+
+  <Import Project="../common.props"/>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TplDefaultStyle.css" />
+    <None Remove="TplPrintRecept.html" />
+    <None Remove="TplPrintWaybill.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TplDefaultStyle.css" />
+    <EmbeddedResource Include="TplPrintRecept.html" />
+    <EmbeddedResource Include="TplPrintWaybill.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JNet.SnowFlake.Sources" Version="1.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\JNet.Vms\JNet.Vms.csproj" />
+  </ItemGroup>
+
+</Project>

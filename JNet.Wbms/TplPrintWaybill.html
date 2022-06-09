@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  ${Style}
+</head>
+<body>
+  <div class="item">
+    <h3 style="line-height:40px; text-align:center; color:red;">${EntName}-货运单</h3>
+    <table>
+      <colgroup>
+        <col width="8%" />
+        <col width="26%" />
+        <col width="8%" />
+        <col width="15%" />
+        <col width="8%" />
+        <col width="35%" />
+      </colgroup>
+      <tbody>
+        <tr>
+          <td align="center" style="font-weight:bold;">发货方</td>
+          <td>${Consignor}</td>
+          <td align="center" style="font-weight:bold;">电话</td>
+          <td>${ConsignorContact}</td>
+          <td align="center" style="font-weight:bold;">地址</td>
+          <td>${ConsignorAddr}</td>
+        </tr>
+        <tr>
+          <td align="center" style="font-weight:bold;">收货方</td>
+          <td>${Consignee}</td>
+          <td align="center" style="font-weight:bold;">电话</td>
+          <td>${ConsigneeContact}</td>
+          <td align="center" style="font-weight:bold;">地址</td>
+          <td>${ConsigneeAddr}</td>
+        </tr>
+        <tr>
+          <td align="center" style="font-weight:bold;">承运人</td>
+          <td>${Driver}</td>
+          <td align="center" style="font-weight:bold;">电话</td>
+          <td>${DriverContact}</td>
+          <td align="center" style="font-weight:bold;">车号</td>
+          <td>${PlateNo}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th width="20%">货物名称</th>
+          <th width="20%">包装形式</th>
+          <th width="20%">件数</th>
+          <th width="20%">件重</th>
+          <th width="20%">体积(m³)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {@each Cargos as cargo}
+        <tr>
+          <td align="center">${cargo.Name}</td>
+          <td align="center">${cargo.Package}</td>
+          <td align="center">${cargo.PackageNumber}</td>
+          <td align="center">${cargo.PackageWeight}</td>
+          <td align="center">${cargo.PackageDimension}</td>
+        </tr>
+        {@/each}
+        {@if Cargos.length < 3}
+        {@each i in range(Cargos.length,2)}
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        {@/each}
+        {@/if}
+      </tbody>
+    </table>
+    <table>
+      <colgroup>
+        <col width="20%" />
+        <col width="80%" />
+      </colgroup>
+      <tbody>
+        <tr>
+          <td align="center" style="font-weight:bold;">付款方式</td>
+          <td>
+            <div class="check {@if PaymentMode == 0}checked{@else}unchecked{@/if}">收货方付</div>
+            <div class="check {@if PaymentMode == 1}checked{@else}unchecked{@/if}">发货方付</div>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="font-weight:bold;">运费金额(大写)</td>
+          <td>
+            <span class="cn-num">${CnNums[0]}</span>万
+            <span class="cn-num">${CnNums[1]}</span>仟
+            <span class="cn-num">${CnNums[2]}</span>佰
+            <span class="cn-num">${CnNums[3]}</span>拾
+            <span class="cn-num">${CnNums[4]}</span>元
+            &nbsp;&nbsp;￥：<span style="width:80px;border-bottom:1px solid #000;">${ActualAmount}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody>
+        <tr>
+          <td width="1px">承运条款</td>
+          <td width="100%">
+            1.承运方承运货物时按件接收，保障货物外包装完好无损，不负责内装货物是否完好，提货方提货时当面验收货物，事后货物缺损，承运方概不负责。<br />
+            2.发货方必须按货物实价保险，如遇货损、丢失、属责任范围内的，按投保有关规定赔偿，未保价的，承运方最多不超过运费的三倍赔偿。<br />
+            3.货物外包装应符合运输标准，严禁夹带危险物品、禁运物品、否则一切损失由发货人负责。
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="height:40px;line-height:40px;">
+      <span style="display:inline-block;float:left;width:33.3%;">托运人签章：</span>
+      <span style="display:inline-block;float:left;width:33.3%;">承运人签章：</span>
+      <span style="display:inline-block;float:left;width:33.3%;">收货人签章：</span>
+    </div>
+  </div>
+</body>
+</html>

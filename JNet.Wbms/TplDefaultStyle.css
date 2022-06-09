@@ -1,0 +1,10 @@
+﻿* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: #fff; font-size: 14px; }
+.item { page-break-inside:avoid; }
+table { width: 100%; border-collapse: collapse; }
+table + table { margin-top: -1px; }
+table td, table th { table-layout: fixed; border: 1px solid #aaa; padding: 0 5px; height: 30px;  word-break: break-all; }
+.check { display: inline-block; vertical-align: middle; }
+.checked::before { content: '☑'; display: inline-block; vertical-align: middle; margin-top: -5px; font-size: 20px; }
+.unchecked::before { content: '☐'; display: inline-block; vertical-align: middle; margin-top: -5px; font-size: 20px; }
+.cn-num{ display: inline-block; width: 2em; font-weight: bold; text-align: center; }

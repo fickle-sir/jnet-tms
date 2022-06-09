@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  ${Style}
+</head>
+<body>
+  <div class="item">
+    <h3 style="line-height:40px; text-align:center; color:red;">${EntName}-收货确认回执单</h3>
+    <table>
+      <colgroup>
+        <col width="15%" />
+        <col width="35%" />
+        <col width="15%" />
+        <col width="35%" />
+      </colgroup>
+      <tbody>
+        <tr>
+          <td align="center" style="font-weight:bold;">运单号</td>
+          <td>${ID}</td>
+          <td align="center" style="font-weight:bold;">承运方</td>
+          <td>${EntName}</td>
+        </tr>
+        <tr>
+          <td align="center" style="font-weight:bold;">发货方</td>
+          <td>${Consignor}</td>
+          <td align="center" style="font-weight:bold;">收货方</td>
+          <td>${Consignee}</td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-indent:2em;padding:5px;line-height:22px;">
+            请贵公司在收到我公司所承运的货物后按货运单即刻验收，如有问题请立即反馈，如无问题请将此单签字（盖章）后交由我公司的司机带回，方便我公司结算，感谢支持。请在“是否相符”处填写√或ㄨ。
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th width="20%">货物名称</th>
+          <th width="20%">包装形式</th>
+          <th width="20%">单位</th>
+          <th width="20%">数量</th>
+          <th width="20%">是否相符</th>
+        </tr>
+      </thead>
+      <tbody>
+        {@each Cargos as cargo}
+        <tr>
+          <td align="center">${cargo.Name}</td>
+          <td align="center">${cargo.Package}</td>
+          <td align="center">${cargo.Unit}</td>
+          <td align="center">${cargo.Number}</td>
+          <td align="center">--</td>
+        </tr>
+        {@/each}
+        {@if Cargos.length < 3}
+        {@each i in range(Cargos.length,2)}
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        {@/each}
+        {@/if}
+      </tbody>
+    </table>
+    <div style="height:100px;line-height:40px;">
+      <span style="display:inline-block;float:left;width:33.3%;">&nbsp;</span>
+      <span style="display:inline-block;float:left;width:33.3%;">收货人签章：</span>
+      <span style="display:inline-block;float:left;width:33.3%;">签收日期：</span>
+    </div>
+  </div>
+</body>
+</html>

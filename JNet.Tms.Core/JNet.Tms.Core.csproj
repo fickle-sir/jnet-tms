@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>JNet.Tms</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="../common.props" />
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="JNet.DataAnnotations.Sources" Version="1.0.0" />
+    <PackageReference Include="JNet.EFCore.Sources" Version="1.0.0" />
+    <PackageReference Include="JNet.Menus.Sources" Version="1.0.0" />
+    <PackageReference Include="JNet.Mvc.EntityServices.Sources" Version="1.0.0" />
+    <PackageReference Include="JNet.Mvc.ModelBinding.Metadata.Angular.Nz.Sources" Version="1.0.0" />
+    <PackageReference Include="JNet.Mvc.Sources" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

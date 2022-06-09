@@ -1,0 +1,7 @@
+[*.cs]
+
+# IDE0022: 使用方法的程序块主体
+dotnet_diagnostic.IDE0022.severity = silent
+
+# IDE0090: 使用 "new(...)"
+dotnet_diagnostic.IDE0090.severity = silent
